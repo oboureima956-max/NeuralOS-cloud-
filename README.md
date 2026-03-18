@@ -1686,3 +1686,36 @@ ht@4"
 <button class="w-full mt-2 text-primary font-bold py-3 px-6 rounded-lg border border-primary/50 hover:bg-primary/10 transition-colors flex items-center justify-center gap-2">  
 <span class="material-symbols-outlined">tune</span>  
 <span>LaE0E
+.github/workflows/android.yml
+name: Build NeuralOS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Build
+        run: gradle build
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: .
