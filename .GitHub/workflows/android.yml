@@ -1,0 +1,10 @@
+YAML
+name:test
+on:
+push:
+jobs:
+test:
+run-in:ubuntu-latest
+steps:
+-name: Hello 
+run: echo "Hello Neuralos"
