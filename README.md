@@ -11,6 +11,8 @@ name: Android CI/CD
 on:
   push:
     branches: [ "principal" ]
+    tags:
+      - "v*"
   pull_request:
     branches: [ "principal" ]
   workflow_dispatch:
